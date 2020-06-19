@@ -60,7 +60,7 @@ def rewrite_file_imports(
 
     for lib in vendored_libs:
         text = re.sub(
-            rf"(\n\s*|^)import {lib}(\n\s*)",
+            rf"(\n\s*|^)import {lib}(\n|\s+.*|\..*)",
             rf"\1from {namespace} import {lib}\2",
             text,
         )
